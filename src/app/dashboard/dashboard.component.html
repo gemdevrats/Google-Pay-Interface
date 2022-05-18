@@ -1,0 +1,49 @@
+<div class="container mt-3 main-container">
+    <div class="name-div border-2">
+        <div class="name mt-2">
+            <img src="https://pluspng.com/img-png/left-arrow-png-left-icon-1600.png" alt="">
+            &nbsp;
+            <img src="https://th.bing.com/th/id/OIP.pH5R0Lq_qmfphqyCtbcbygHaHa?pid=ImgDet&rs=1" alt="">
+        </div>
+        &nbsp; &nbsp;
+        <div>
+            Devvrat Sharma <br>
+            +91 9876547389
+        </div>
+    </div>
+    <div class="payment-interface">
+        <div *ngFor="let data of paymentData" style="height: 100%; width: 100%; display: inline-block;">
+            <div class="card mt-3 mb-3 ms-1 me-1 amount" 
+                [ngClass]="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Received')?'alignment':''">
+                <div class="ms-2" style="display: inline-flex;">
+                    <div style="font-size: xx-large; font-weight:bold; width: 50%;">&#8377; {{data.transactionAmount}}</div>
+                    <div style="text-align: end; width: 50%; font-size: medium;" class="me-2 mt-2">{{data.transaction}}</div>
+                </div>
+                <div class="ms-2"
+                    *ngIf="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Sent')">
+                    <div style="font-size: small;">Transaction Id</div>
+                    <div style="font-size: small;">{{data.transactionId}}
+                        <img class="arrow mb-2 me-2"
+                            src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png" alt="">
+                    </div>
+
+                </div>
+                <div class="container mb-3 mt-2"
+                    *ngIf="data.transactionType=='Collect' && data.transactionDirection =='Received'">
+                    <button class="btn btn-outline-danger" type="button">Cancel</button>
+                    <img class="arrow" src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png"
+                        alt="">
+                </div>
+                <div class="container mb-3 mt-2"
+                    *ngIf="data.transactionType=='Pay' && data.transactionDirection =='Received'">
+                    <button class="btn btn-outline-success" type="button">Pay</button>
+                    &nbsp;
+                    <button class="btn btn-outline-danger" type="button">Decline</button>
+                    <img class="arrow" src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png"
+                        alt="">
+                </div>
+            </div>
+            <div>{{data.date|date}}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+.main-container{
+    width: 50%;
+    padding: 0;
+    border-style:solid;
+    border-color:black
+}
+
+.name-div{
+    font-size: small;
+    display: inline-flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border-style: dashed;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+
+}
+
+img{
+    width: 27px;
+    height: 27px;
+}
+
+.card{
+    width: 55%;
+}
+
+.amount{
+    display: inline-flex;
+    border-style:solid;
+    border-color:black
+}
+
+button{
+    height: 10%;
+    padding: 0;
+    margin: 0;
+    width: 30%;
+}
+
+.arrow{
+    float: right;
+    height: 5%;
+    width: 3%;
+}
+
+.payment-interface{
+    height: 100%;
+    width: 100%;
+}
+
+.alignment{
+    float: right;
+}
