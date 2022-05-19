@@ -1,4 +1,4 @@
-<div class="container mt-3 main-container">
+<div class="container mt-3 mb-4 main-container">
     <div class="name-div border-2">
         <div class="name mt-2">
             <img src="https://pluspng.com/img-png/left-arrow-png-left-icon-1600.png" alt="">
@@ -12,38 +12,45 @@
         </div>
     </div>
     <div class="payment-interface">
-        <div *ngFor="let data of paymentData" style="height: 100%; width: 100%; display: inline-block;">
-            <div class="card mt-3 mb-3 ms-1 me-1 amount" 
-                [ngClass]="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Received')?'alignment':''">
-                <div class="ms-2" style="display: inline-flex;">
-                    <div style="font-size: xx-large; font-weight:bold; width: 50%;">&#8377; {{data.transactionAmount}}</div>
-                    <div style="text-align: end; width: 50%; font-size: medium;" class="me-2 mt-2">{{data.transaction}}</div>
-                </div>
-                <div class="ms-2"
-                    *ngIf="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Sent')">
-                    <div style="font-size: small;">Transaction Id</div>
-                    <div style="font-size: small;">{{data.transactionId}}
-                        <img class="arrow mb-2 me-2"
+        <fieldset class="main-loop mt-3" style="display: inline-block; height:100%; width:100%" *ngFor="let data of paymentData;index as i">
+            <div class="divider">{{data.date|date:'short'}}</div>
+            <div style="height: 100%; width: 100%; display: inline-block;">
+                <div class="card mt-3 mb-3 ms-1 me-1 amount"
+                    [ngClass]="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Received')?'alignment':''">
+                    <div class="ms-2" style="display: inline-flex;">
+                        <div style="font-size: xx-large; font-weight:bold; width: 50%;">&#8377;
+                            {{data.transactionAmount}}</div>
+                        <div style="text-align: end; width: 50%; font-size: medium;" class="me-2 mt-2">
+                            <img *ngIf="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Sent')" src="https://static.vecteezy.com/system/resources/previews/000/581/688/original/green-check-mark-logo-template-illustration-design-vector-eps-10.jpg" alt="">
+                            <img *ngIf="(data.transactionType=='Collect' && data.transactionDirection =='Received') || (data.transactionType=='Pay' && data.transactionDirection =='Received')" src="https://th.bing.com/th/id/R.b3b8019ee5c8c88b61f0eeb815cec8dd?rik=O%2b0gEY2pehZJqQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_424061.png&ehk=I3Ow%2bwiPMOUtvedaxK6mnuIDhvUNYVn3XdTY9sbmzLE%3d&risl=&pid=ImgRaw&r=0" alt="">
+                            {{data.transaction}}</div>
+                    </div>
+                    <div class="ms-2"
+                        *ngIf="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Sent')">
+                        <div style="font-size: small;">Transaction Id</div>
+                        <div style="font-size: small;">{{data.transactionId}}
+                            <img class="arrow mb-2 me-2"
+                                src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png" alt="">
+                        </div>
+
+                    </div>
+                    <div class="container mb-3 mt-2"
+                        *ngIf="data.transactionType=='Collect' && data.transactionDirection =='Received'">
+                        <button class="btn btn-outline-danger" type="button">Cancel</button>
+                        <img class="arrow"
                             src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png" alt="">
                     </div>
-
-                </div>
-                <div class="container mb-3 mt-2"
-                    *ngIf="data.transactionType=='Collect' && data.transactionDirection =='Received'">
-                    <button class="btn btn-outline-danger" type="button">Cancel</button>
-                    <img class="arrow" src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png"
-                        alt="">
-                </div>
-                <div class="container mb-3 mt-2"
-                    *ngIf="data.transactionType=='Pay' && data.transactionDirection =='Received'">
-                    <button class="btn btn-outline-success" type="button">Pay</button>
-                    &nbsp;
-                    <button class="btn btn-outline-danger" type="button">Decline</button>
-                    <img class="arrow" src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png"
-                        alt="">
+                    <div class="container mb-3 mt-2"
+                        *ngIf="data.transactionType=='Pay' && data.transactionDirection =='Received'">
+                        <button class="btn btn-outline-success" type="button">Pay</button>
+                        &nbsp;
+                        <button class="btn btn-outline-danger" type="button">Decline</button>
+                        <img class="arrow"
+                            src="https://fabletics-us-cdn.justfab.com/media/images/dm/1698/rightArrow.png" alt="">
+                    </div>
                 </div>
             </div>
-            <div>{{data.date|date}}</div>
-        </div>
+            <div class="date me-2" [ngClass]="(data.transactionType=='Pay' && data.transactionDirection =='Sent') || (data.transactionType=='Collect' && data.transactionDirection =='Received')?'alignment':''">{{data.date|date:'medium'}}</div>
+        </fieldset>
     </div>
 </div>

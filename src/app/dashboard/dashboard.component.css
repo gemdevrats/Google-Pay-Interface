@@ -25,6 +25,7 @@ img{
 
 .card{
     width: 55%;
+
 }
 
 .amount{
@@ -54,3 +55,31 @@ button{
 .alignment{
     float: right;
 }
+
+.date{
+    text-align: right;
+    font-size: small;
+    margin-top: -10px;
+    width: 55%;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .divider::after,
+  .divider::before {
+    content: "";
+    border: 1px dashed black;
+    flex: 1;
+  }
+  
+  .divider:not(:empty)::before {
+    margin-right: 0.25em;
+  }
+  
+  .divider:not(:empty)::after {
+    margin-left: 0.25em;
+  }
